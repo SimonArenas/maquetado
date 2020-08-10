@@ -1,0 +1,155 @@
+{
+  "navigation": [
+    {
+      "id": 1,
+      "name": "Catalogo",
+      "icono": "open-book",
+      "url": "/catalogo"
+    },
+    {
+      "id": 2,
+      "name": "Productos",
+      "icono": "cardboard-box",
+      "url": "/productos",
+      "submenu": [
+        {
+          "id": 100,
+          "name": "Productos",
+          "url": "/"
+        },
+        {
+          "id": 200,
+          "name": "Disponiblidad",
+          "url": "/disponibilidad"
+        },
+        {
+          "id": 300,
+          "name": "APIs",
+          "url": "/apis"
+        },
+        {
+          "id": 400,
+          "name": "Categorías",
+          "url": "/categorias"
+        },
+        {
+          "id": 500,
+          "name": "Categorías de dispositivos",
+          "url": "/categorias-dispositivos"
+        },
+        {
+          "id": 600,
+          "name": "Dispositivos",
+          "url": "/dispositivos"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Pedidos",
+      "icono": "todo-list",
+      "url": "/pedidos",
+      "submenu": [
+        {
+          "id": 100,
+          "name": "Submenu 1"
+        },
+        {
+          "id": 200,
+          "name": "Submenu 2"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Usuarios",
+      "icono": "user-male-circle",
+      "url": "/usuarios",
+      "submenu": [
+        {
+          "id": 100,
+          "name": "Submenu 1"
+        },
+        {
+          "id": 200,
+          "name": "Submenu 2"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Empresas",
+      "icono": "building",
+      "url": "/empresas",
+      "submenu": [
+        {
+          "id": 100,
+          "name": "Submenu 1"
+        },
+        {
+          "id": 200,
+          "name": "Submenu 2"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Marketing",
+      "icono": "commercial",
+      "url": "/marketing",
+      "submenu": [
+        {
+          "id": 100,
+          "name": "Submenu 1"
+        },
+        {
+          "id": 200,
+          "name": "Submenu 2"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Configuracion",
+      "icono": "settings-3",
+      "url": "/configuracion",
+      "submenu": [
+        {
+          "id": 100,
+          "name": "Submenu 1"
+        },
+        {
+          "id": 200,
+          "name": "Submenu 2"
+        }
+      ]
+    }
+  ],
+  "footer": [
+    {
+      "id": 1,
+      "name": "About",
+      "url": "/about"
+    },
+    {
+      "id": 2,
+      "name": "Legal Information",
+      "url": "/legal"
+    },
+    {
+      "id": 3,
+      "name": "Contact",
+      "url": "/contact"
+    },
+    {
+      "id": 4,
+      "name": "Terms of service",
+      "url": "/terms"
+    },
+    {
+      "id": 5,
+      "name": "Privacy Policy",
+      "url": "/privacy"
+    }
+  ]
+}
