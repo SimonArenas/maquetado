@@ -16,5 +16,7 @@ export default {};
   height: 40px;
   background-color: #95afc0;
   color: white;
+
+
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <v-card class="mx-auto" width="256">
-    <v-navigation-drawer class="orange lighten-1" dark permanent right>
+    <v-navigation-drawer class="teal lighten-2" dark permanent>
       <v-list>
         <v-list-item class="center">
           <v-list-item-content>

@@ -70,7 +70,9 @@ export default {
 
   height: 100%;
   width: 100px;
-  // background-color: red;
+
+ 
+
   p {
     font-size: 12px;
     margin: 0;
