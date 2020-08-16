@@ -1,7 +1,7 @@
 import axios from "../../node_modules/axios";
 
 const apiClient = axios.create({
-  baseURL: "https://cdn-scorpius.elifebackup.com/files/menu.json",
+  baseURL: "http://localhost:3000",
   withCredentials: false,
   header: {
     Accept: "application/json",

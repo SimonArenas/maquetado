@@ -180,6 +180,8 @@
                     <AsideTab
                       @RightSidebarApplied="onRightSidebarApplied"
                       @LeftSidebarApplied="onLeftSidebarApplied"
+                      @MenuRightSidebarApplied="onMenuRightSidebarApplied"
+                      :leftSidebar="menuSize"
                     />
                   </v-card-text>
                 </v-card>
@@ -190,9 +192,9 @@
               <v-tab-item>
                 <v-card flat>
                   <v-card-text>
-                    <Footer
+                    <FooterTab
                       @FooterApplied="onFooterApplied"
-                      @SwapFooterOrder="onSwapOrder"
+                      @FooterFixedApplied="onFooterFixedApplied"
                     />
                   </v-card-text>
                 </v-card>
@@ -209,21 +211,21 @@
                     <v-tab-item>
                       <v-card flat>
                         <v-card-text>
-                          HOLA
+                          MENÚ
                         </v-card-text>
                       </v-card>
                     </v-tab-item>
                     <v-tab-item>
                       <v-card flat>
                         <v-card-text>
-                          HOLA
+                          CONTACTO
                         </v-card-text>
                       </v-card>
                     </v-tab-item>
                     <v-tab-item>
                       <v-card flat>
                         <v-card-text>
-                          HOLA
+                          REDES SOCIALES
                         </v-card-text>
                       </v-card>
                     </v-tab-item>
@@ -236,7 +238,7 @@
               <v-tab-item>
                 <v-card flat>
                   <v-card-text>
-                    Copy
+                    Catálogo
                   </v-card-text>
                 </v-card>
               </v-tab-item>
@@ -246,7 +248,7 @@
               <v-tab-item>
                 <v-card flat>
                   <v-card-text>
-                    Copy
+                    Páginas
                   </v-card-text>
                 </v-card>
               </v-tab-item>
@@ -255,14 +257,19 @@
         </v-container>
       </v-col>
 
-      <RightSidebar v-if="RightSidebar" />
+      <RightSidebar
+        v-if="RightSidebar"
+        :ShowMenuRightSidebar="showMenuRightSidebar"
+      />
     </v-row>
 
-    <SimpleFooter v-if="FooterType == 'Sencillo'" />
+    <v-img src="./assets/img.jpg" aspect-ratio="1.7" contain></v-img>
 
-    <MultipleFooter v-if="FooterType == 'Múltiple'" :SwapOrder="swapOrder" />
-
-    <!-- <img src="./assets/Header.png" alt="" /> -->
+    <Footer
+      class="footer"
+      :showFooter="ShowFooter"
+      :fixedFooter="FixedFooter"
+    />
   </v-app>
 </template>
 
@@ -272,6 +279,7 @@ import PreheaderTab from "./components/Preheader-tab";
 import HeaderTab from "./components/Header-tab";
 import SubHeaderTab from "./components/Subheader-tab";
 import AsideTab from "./components/Aside-tab";
+import FooterTab from "./components/Footer-tab";
 import NotificationArea from "./components/NotificationArea";
 import Preheader from "./components/Preheader";
 import HeaderHorizontal from "./components/HeaderHorizontal";
@@ -280,8 +288,7 @@ import Content from "./components/Content";
 import RightSidebar from "./components/RightSidebar";
 import LeftSidebar from "./components/LeftSidebar";
 import Footer from "./components/Footer";
-import SimpleFooter from "./components/SimpleFooter";
-import MultipleFooter from "./components/MultipleFooter";
+
 export default {
   name: "App",
   data() {
@@ -292,6 +299,7 @@ export default {
       FixedPreheader: null,
       FixedSubheader: null,
       FixedHeader: null,
+      FixedFooter: null,
       alignMenu: null,
       FullWidth: null,
       showHorizontalHeader: false,
@@ -300,8 +308,10 @@ export default {
       menuSize: null,
       fullContentWidth: false,
       RightSidebar: null,
+      showMenuRightSidebar: false,
+      ShowFooter: null,
       LeftSidebar: null,
-      FooterType: null,
+
       swapOrder: null,
       tab: null,
       ShowProfileHorizontalHeader: false,
@@ -329,9 +339,9 @@ export default {
     Content,
     RightSidebar,
     LeftSidebar,
+    FooterTab,
     Footer,
-    SimpleFooter,
-    MultipleFooter,
+
     TiendaTab,
     AsideTab,
     SubHeaderTab,
@@ -356,6 +366,9 @@ export default {
     onSubheaderFixedApplied() {
       this.FixedSubheader = !this.FixedSubheader;
     },
+    onFooterFixedApplied() {
+      this.FixedFooter = !this.FixedFooter;
+    },
     OnFullWidthHorizontalMenuApplied(value) {
       this.FullWidth = value;
       return this.FullWidth;
@@ -372,6 +385,7 @@ export default {
     },
     onHeaderVerticalApplied() {
       this.showVerticalHeader = !this.showVerticalHeader;
+      this.LeftSidebar = false;
       if (this.showHorizontalHeader) {
         this.showHorizontalHeader = false;
       }
@@ -379,6 +393,9 @@ export default {
     onOneRowHeaderApplied() {
       this.showOneHeader = !this.showOneHeader;
       // this.showHorizontalHeader = !this.showHorizontalHeader;
+    },
+    onMenuRightSidebarApplied() {
+      this.showMenuRightSidebar = !this.showMenuRightSidebar;
     },
     onVerticalMenuSize(value) {
       this.menuSize = value;
@@ -394,9 +411,8 @@ export default {
     onLeftSidebarApplied() {
       this.LeftSidebar = !this.LeftSidebar;
     },
-    onFooterApplied(value) {
-      this.FooterType = value;
-      console.log(this.FooterType);
+    onFooterApplied() {
+      this.ShowFooter = !this.ShowFooter;
     },
     onSwapOrder() {
       this.swapOrder = !this.swapOrder;
@@ -460,9 +476,6 @@ export default {
 }
 .container--fluid {
   max-width: 100%;
-}
-.footer {
-  margin-top: auto;
 }
 
 .center {

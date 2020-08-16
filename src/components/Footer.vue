@@ -1,52 +1,37 @@
 <template>
-  <div>
-    <v-row no-gutters align="center">
-      <p>Elegir footer</p>
-      <v-overflow-btn
-        v-model="selectedFooterType"
-        :items="footerType"
-        item-value="text"
-        label="Tipo"
-        persistent-hint
-        return-object
-        single-line
-        dense
-        class="ml-10"
-        @change="onFooterType($event)"
-      ></v-overflow-btn>
-    </v-row>
-    <v-row no-gutters v-if="selectedFooterType.text == 'Múltiple'">
-      <v-checkbox
-        class="no-space"
-        v-model="swapMultipleFooterOrder"
-        @change="onswapMultipleFooterOrderClicked($event)"
-      >
-        <template v-slot:label> <h4>Invertir orden</h4></template>
-        ></v-checkbox
-      >
-    </v-row>
+  <div
+    v-if="showFooter"
+    class="simple-footer"
+    v-bind:style="[
+      fixedFooter
+        ? {
+            position: 'fixed',
+            zIndex: '3000',
+            bottom: '0',
+            left: '0',
+          }
+        : null,
+    ]"
+  >
+    Previsualización footer
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      selectedFooterType: true,
-      selectedSwapOrder: null,
-      swapMultipleFooterOrder: null,
-      footerType: [{ text: "Sencillo" }, { text: "Múltiple" }],
-    };
-  },
-  methods: {
-    onFooterType() {
-      this.$emit("FooterApplied", this.selectedFooterType.text);
-    },
-    onswapMultipleFooterOrderClicked() {
-      this.$emit("SwapFooterOrder", this.selectedSwapOrder);
-    },
-  },
+  props: ["showFooter", "fixedFooter"],
 };
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="scss" scoped>
+.simple-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // height: 40px;
+  background-color: #95afc0;
+  color: white;
+  width: 100%;
+  padding: 10px 0;
+}
+</style>

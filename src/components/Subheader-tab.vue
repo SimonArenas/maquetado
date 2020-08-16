@@ -13,8 +13,8 @@
         >
       </v-col>
     </v-row>
-    <!-- ¿Header en una sola fila? -->
-    <v-row no-gutters>
+    <!-- ¿Mostrar menú? -->
+    <v-row v-if="SubheaderCheckbox" no-gutters>
       <v-checkbox
         class="no-space"
         v-model="oneRowHeader"

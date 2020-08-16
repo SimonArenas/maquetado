@@ -51,7 +51,7 @@
         </v-row>
       </div>
 
-      <v-col class="header__extras" cols="auto">
+      <v-col class="header__extras">
         <div v-if="showProfileSubheader" class="header__user">
           <img
             class="header__user-profile"
@@ -177,6 +177,7 @@ li {
 
     // align-content: center;
     // align-items: center;
+    padding: 0;
     justify-content: flex-end;
   }
   &__user {
