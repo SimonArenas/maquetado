@@ -13,63 +13,83 @@
     ]"
   >
     <v-container class="preheader">
-      <div v-if="showLogoSubheader" class="preheader__logo">
-        <img src="../assets/logo.png" alt="" />
-      </div>
-      <v-spacer></v-spacer>
+      <v-row>
+        <div v-if="showLogoSubheader" class="preheader__logo">
+          <img src="../assets/logo.png" alt="" />
+        </div>
+        <v-spacer></v-spacer>
 
-      <div v-if="ShowOneHeader" class="header-horizontal">
-        <v-row class="items-menu">
-          <div class="header-menu">
-            <v-menu
-              :open-on-hover="openOnHover"
-              :close-on-click="closeOnClick"
-              :close-on-content-click="closeOnContentClick"
-              :offset-x="offsetX"
-              :offset-y="offsetY"
-              v-for="navItem in navItems"
-              :key="navItem.id"
-            >
-              <template v-slot:activator="{ on, attrs }">
-                <li dark v-bind="attrs" v-on="on">
-                  {{ navItem.name }}
-                </li>
-              </template>
-              <v-list>
-                <v-list-item>
-                  <v-list-item-title>Item a</v-list-item-title>
-                </v-list-item>
-                <v-list-item>
-                  <v-list-item-title>Item b</v-list-item-title>
-                </v-list-item>
-                <v-list-item>
-                  <v-list-item-title>Item c</v-list-item-title>
-                </v-list-item>
-              </v-list>
-            </v-menu>
+        <div v-if="ShowOneHeader" class="header-horizontal">
+          <v-row class="items-menu">
+            <div class="header-menu">
+              <v-menu
+                :open-on-hover="openOnHover"
+                :close-on-click="closeOnClick"
+                :close-on-content-click="closeOnContentClick"
+                :offset-x="offsetX"
+                :offset-y="offsetY"
+                v-for="navItem in navItems"
+                :key="navItem.id"
+              >
+                <template v-slot:activator="{ on, attrs }">
+                  <li dark v-bind="attrs" v-on="on">
+                    {{ navItem.name }}
+                  </li>
+                </template>
+                <v-list>
+                  <v-list-item>
+                    <v-list-item-title>Item a</v-list-item-title>
+                  </v-list-item>
+                  <v-list-item>
+                    <v-list-item-title>Item b</v-list-item-title>
+                  </v-list-item>
+                  <v-list-item>
+                    <v-list-item-title>Item c</v-list-item-title>
+                  </v-list-item>
+                </v-list>
+              </v-menu>
+            </div>
+          </v-row>
+        </div>
+
+        <v-col
+          v-if="
+            showProfileSubheader ||
+              showSocialMediaSubheader ||
+              showContactSubheader
+          "
+          class="header__extras"
+        >
+          <div v-if="showProfileSubheader" class="header__user">
+            <img
+              class="header__user-profile"
+              src="../assets/profile-photo.png"
+              alt=""
+            />
+            <img
+              class="header__user-logout"
+              src="../assets/logout.png"
+              alt=""
+            />
           </div>
-        </v-row>
-      </div>
+          <div v-if="showSocialMediaSubheader" class="header__social">
+            <a v-bind:href="Links.FacebookLink" target="_blank"
+              ><img src="../assets/facebook.png" alt=""
+            /></a>
 
-      <v-col class="header__extras">
-        <div v-if="showProfileSubheader" class="header__user">
-          <img
-            class="header__user-profile"
-            src="../assets/profile-photo.png"
-            alt=""
-          />
-          <img class="header__user-logout" src="../assets/logout.png" alt="" />
-        </div>
-        <div v-if="showSocialMediaSubheader" class="header__social">
-          <img src="../assets/facebook.png" alt="" />
-          <img src="../assets/twitter.png" alt="" />
-          <img src="../assets/instagram.png" alt="" />
-        </div>
-        <div v-if="showContactSubheader" class="header__contact">
-          <img src="../assets/phone.png" alt="" />
-          <p>279823432</p>
-        </div>
-      </v-col>
+            <a v-bind:href="Links.TwitterLink" target="_blank"
+              ><img src="../assets/twitter.png" alt=""
+            /></a>
+            <a v-bind:href="Links.InstagramLink" target="_blank"
+              ><img src="../assets/instagram.png" alt=""
+            /></a>
+          </div>
+          <div v-if="showContactSubheader" class="header__contact">
+            <img src="../assets/phone.png" alt="" />
+            <p>{{ phoneNumber }}</p>
+          </div>
+        </v-col>
+      </v-row>
     </v-container>
   </div>
 </template>
@@ -85,6 +105,8 @@ export default {
     "showLogoSubheader",
     "showContactSubheader",
     "fixedSubheader",
+    "phoneNumber",
+    "Links",
   ],
   data() {
     return {
@@ -177,6 +199,7 @@ li {
 
     // align-content: center;
     // align-items: center;
+    margin-top: -5px;
     padding: 0;
     justify-content: flex-end;
   }

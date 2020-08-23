@@ -1,13 +1,13 @@
 <template>
   <v-card class="mx-auto" width="256">
     <v-navigation-drawer class="orange lighten-1" dark permanent right>
-      <!-- <v-list>
+      <v-list v-if="!ShowMenuRightSidebar">
         <v-list-item class="center">
           <v-list-item-content>
             <v-list-item-title>Previsualización</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-      </v-list> -->
+      </v-list>
       <div class="sidebar-large">
         <nav v-if="ShowMenuRightSidebar" class="sidebar-large__nav">
           <p style="margin-left:15px; font-size: 10px">Previsualización:</p>

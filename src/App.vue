@@ -4,7 +4,6 @@
       v-if="showNotificationArea"
       :fixedPreheader="FixedPreheader"
     />
-
     <HeaderHorizontal
       v-if="showHorizontalHeader"
       :ShowOneHeader="showOneHeader"
@@ -15,6 +14,8 @@
       :showLogoHorizontalHeader="ShowLogoHorizontalHeader"
       :showContactHorizontalHeader="ShowContactHorizontalHeader"
       :fixedHeader="FixedHeader"
+      :phoneNumber="PhoneNumber"
+      :Links="SocialMediaLinks"
     />
     <Preheader
       v-if="showSubheader"
@@ -24,6 +25,8 @@
       :showLogoSubheader="ShowLogoSubheader"
       :showContactSubheader="ShowContactSubheader"
       :fixedSubheader="FixedSubheader"
+      :phoneNumber="PhoneNumber"
+      :Links="SocialMediaLinks"
     />
     <v-row>
       <HeaderVertical v-if="showVerticalHeader" :MenuSize="menuSize" />
@@ -218,14 +221,15 @@
                     <v-tab-item>
                       <v-card flat>
                         <v-card-text>
-                          CONTACTO
+                          <!-- Contact tab -->
+                          <ContactTab @PhoneNumber="onPhoneNumber" />
                         </v-card-text>
                       </v-card>
                     </v-tab-item>
                     <v-tab-item>
                       <v-card flat>
                         <v-card-text>
-                          REDES SOCIALES
+                          <SocialMedia @SocialMedia="onSocialMedia" />
                         </v-card-text>
                       </v-card>
                     </v-tab-item>
@@ -238,7 +242,7 @@
               <v-tab-item>
                 <v-card flat>
                   <v-card-text>
-                    Catálogo
+                    <CatalogoTab />
                   </v-card-text>
                 </v-card>
               </v-tab-item>
@@ -248,7 +252,7 @@
               <v-tab-item>
                 <v-card flat>
                   <v-card-text>
-                    Páginas
+                    <PagesTab />
                   </v-card-text>
                 </v-card>
               </v-tab-item>
@@ -263,7 +267,7 @@
       />
     </v-row>
 
-    <v-img src="./assets/img.jpg" aspect-ratio="1.7" contain></v-img>
+    <!-- <v-img src="./assets/img.jpg" aspect-ratio="1.7" contain></v-img> -->
 
     <Footer
       class="footer"
@@ -280,6 +284,8 @@ import HeaderTab from "./components/Header-tab";
 import SubHeaderTab from "./components/Subheader-tab";
 import AsideTab from "./components/Aside-tab";
 import FooterTab from "./components/Footer-tab";
+import PagesTab from "./components/Pages-tab";
+import CatalogoTab from "./components/Catalogo-tab";
 import NotificationArea from "./components/NotificationArea";
 import Preheader from "./components/Preheader";
 import HeaderHorizontal from "./components/HeaderHorizontal";
@@ -288,6 +294,8 @@ import Content from "./components/Content";
 import RightSidebar from "./components/RightSidebar";
 import LeftSidebar from "./components/LeftSidebar";
 import Footer from "./components/Footer";
+import ContactTab from "./components/Contact-tab";
+import SocialMedia from "./components/SocialMedia";
 
 export default {
   name: "App",
@@ -326,6 +334,13 @@ export default {
       switch_profile: null,
       switch_socialMedia: null,
       switch_contact: null,
+      PhoneNumber: null,
+      hola: null,
+      SocialMediaLinks: {
+        FacebookLink: null,
+        TwitterLink: null,
+        InstagramLink: null,
+      },
     };
   },
 
@@ -340,11 +355,14 @@ export default {
     RightSidebar,
     LeftSidebar,
     FooterTab,
+    PagesTab,
+    CatalogoTab,
     Footer,
-
     TiendaTab,
     AsideTab,
     SubHeaderTab,
+    ContactTab,
+    SocialMedia,
   },
   methods: {
     OnNotificationAreaApplied() {
@@ -449,6 +467,16 @@ export default {
     onShowContactSubheader() {
       this.ShowContactHorizontalHeader = false;
       this.ShowContactSubheader = !this.ShowContactSubheader;
+    },
+    onPhoneNumber(value) {
+      this.PhoneNumber = value;
+      return this.PhoneNumber;
+    },
+    onSocialMedia(value) {
+      this.SocialMediaLinks.FacebookLink = value.facebook;
+      this.SocialMediaLinks.TwitterLink = value.twitter;
+      this.SocialMediaLinks.InstagramLink = value.instagram;
+      return this.SocialMediaLinks;
     },
   },
 };

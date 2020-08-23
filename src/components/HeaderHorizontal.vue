@@ -90,13 +90,20 @@
               />
             </div>
             <div v-if="showSocialMediaHorizontalHeader" class="header__social">
-              <img src="../assets/facebook.png" alt="" />
-              <img src="../assets/twitter.png" alt="" />
-              <img src="../assets/instagram.png" alt="" />
+              <a v-bind:href="Links.FacebookLink" target="_blank"
+                ><img src="../assets/facebook.png" alt=""
+              /></a>
+
+              <a v-bind:href="Links.TwitterLink" target="_blank"
+                ><img src="../assets/twitter.png" alt=""
+              /></a>
+              <a v-bind:href="Links.InstagramLink" target="_blank"
+                ><img src="../assets/instagram.png" alt=""
+              /></a>
             </div>
             <div v-if="showContactHorizontalHeader" class="header__contact">
               <img src="../assets/phone.png" alt="" />
-              <p>279823432</p>
+              <p>{{ phoneNumber }}</p>
             </div>
           </v-col>
         </v-row>
@@ -130,6 +137,8 @@ export default {
     "showContactHorizontalHeader",
     "ShowOneHeader",
     "fixedHeader",
+    "phoneNumber",
+    "Links",
   ],
 
   mounted() {
