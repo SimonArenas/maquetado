@@ -1,6 +1,13 @@
 <template>
-  <v-card class="mx-auto" width="256">
-    <v-navigation-drawer class="teal lighten-2" dark permanent>
+  <v-card class="mx-auto">
+    <v-navigation-drawer
+      width="200"
+      class="teal lighten-2"
+      dark
+      permanent
+      app
+      :expand-on-hover="AsideHover"
+    >
       <v-list>
         <v-list-item class="center">
           <v-list-item-content>
@@ -13,7 +20,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["AsideHover"],
+};
 </script>
 
 <style lang="scss" scoped></style>

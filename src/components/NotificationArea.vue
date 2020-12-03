@@ -12,13 +12,18 @@
         : null,
     ]"
   >
-    Esta es una previsualización del área de notificación
+    <v-icon small :color="iconColor" class="mr-2">mdi-{{ iconName }}</v-icon>
+    {{
+      preheaderText == null
+        ? `Esta es una previsualización del área de notificación`
+        : `${preheaderText}`
+    }}
   </div>
 </template>
 
 <script>
 export default {
-  props: ["fixedPreheader"],
+  props: ["fixedPreheader", "preheaderText", "iconName", "iconColor"],
 };
 </script>
 

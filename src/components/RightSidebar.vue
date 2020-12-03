@@ -1,6 +1,6 @@
 <template>
-  <v-card class="mx-auto" width="256">
-    <v-navigation-drawer class="orange lighten-1" dark permanent right>
+  <v-card class="mx-auto">
+    <v-navigation-drawer width="200" class="orange lighten-1" dark permanent right app>
       <v-list v-if="!ShowMenuRightSidebar">
         <v-list-item class="center">
           <v-list-item-content>
@@ -54,12 +54,12 @@ export default {
 
 .sidebar-large {
   display: flex;
-  background-color: #e1b12c;
+  // background-color: #e1b12c;
   color: white;
   justify-content: center;
   text-align: center;
 
-  height: 100%;
+  // height: 100%;
 
   // background-color: red;
   p {

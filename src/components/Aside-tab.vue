@@ -47,6 +47,13 @@
           <template v-slot:label> <h1>Barra lateral izquierda</h1> </template>
           ></v-checkbox
         >
+        <v-switch
+          v-if="LeftSidebarCheckbox"
+          v-model="switch_AsideHover"
+          label="Maximixar en hover"
+          @change="onAsideHover($event)"
+          hide-details
+        ></v-switch>
         <v-textarea
           v-if="LeftSidebarCheckbox"
           solo
@@ -54,6 +61,7 @@
           label="Estilo personalizado"
           value=""
           clearable
+          class="mt-5"
         ></v-textarea>
       </v-col>
     </template>
@@ -69,6 +77,7 @@ export default {
       RightSidebarCheckbox: null,
       LeftSidebarCheckbox: null,
       showMenuRightSidebar: null,
+      switch_AsideHover: null,
     };
   },
   methods: {
@@ -79,8 +88,10 @@ export default {
       this.$emit("LeftSidebarApplied", this.LeftSidebarCheckbox);
     },
     onShowMenuRightSidebar() {
-      console.log("Hola");
       this.$emit("MenuRightSidebarApplied", this.showMenuRightSidebar);
+    },
+    onAsideHover() {
+      this.$emit("AsideHoverApplied", this.switch_AsideHover);
     },
   },
 };

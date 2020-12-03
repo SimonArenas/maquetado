@@ -25,14 +25,49 @@
           <v-switch label="Mobile fixed position" class="no-space"></v-switch>
         </v-col>
         <v-col md="8">
-          <v-textarea
+          <!-- <v-textarea
             solo
             name="estilo-personalizado"
             label="Estilo personalizado"
             value=""
             clearable
-          ></v-textarea
-        ></v-col>
+          ></v-textarea -->
+          <v-text-field
+            v-model="preheaderText"
+            label="Agregar texto"
+            placeholder="Agregar"
+            outlined
+            dense
+            type="text"
+          ></v-text-field>
+          <v-row>
+            <v-text-field
+              v-model="preheaderIconName"
+              label="Agregar nombre de icono"
+              placeholder="Agregar"
+              outlined
+              dense
+              type="text"
+            ></v-text-field>
+            <v-text-field
+              v-model="preheaderIconColor"
+              label="Color hexadecimal"
+              placeholder="Agregar"
+              outlined
+              dense
+              type="text"
+              class="ml-5"
+            ></v-text-field>
+          </v-row>
+          <h5>
+            Visita
+            <a href="https://materialdesignicons.com/" target="_blank">Material Design icons</a>
+            para ver los nombres de los iconos
+          </h5>
+          <v-btn class="mt-3" color="primary" @click="onPreheaderText($event)"
+            >Actualizar</v-btn
+          >
+        </v-col>
       </template>
     </v-row>
   </div>
@@ -44,6 +79,9 @@ export default {
     return {
       notificationCheckbox: null,
       PreheaderFixedSwitch: null,
+      preheaderText: null,
+      preheaderIconName: null,
+      preheaderIconColor: "#",
     };
   },
   methods: {
@@ -53,6 +91,18 @@ export default {
 
     onPreheaderFixedSwitch() {
       this.$emit("PreheaderFixedApplied", this.PreheaderFixedSwitch);
+    },
+    onPreheaderText() {
+      this.$emit("PreheaderTextApplied", this.preheaderText);
+      this.OnPreheaderIconName();
+      this.OnPreheaderIconColor();
+    },
+
+    OnPreheaderIconName() {
+      this.$emit("PreheaderIconNameApplied", this.preheaderIconName);
+    },
+    OnPreheaderIconColor() {
+      this.$emit("PreheaderIconColorApplied", this.preheaderIconColor);
     },
   },
 };
