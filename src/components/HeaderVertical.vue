@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="sidebar">
     <!-- Menu vertical pequeño -->
     <div v-if="MenuSize == 'Pequeño'" class="sidebar-small">
       <!-- <nav class="sidebar-small__nav">
@@ -24,7 +24,7 @@
         >
           <v-list>
             <v-list-item class="center">
-                <!-- <nav class="sidebar-small__nav">
+              <!-- <nav class="sidebar-small__nav">
         <p style="margin-left:15px; font-size: 10px">Previsualización:</p>
         <router-link
           v-for="navItem in navItems"
@@ -54,17 +54,18 @@
           <p>{{ navItem.name }}</p></router-link
         >
       </nav> -->
+      <!-- <v-card> -->
         <v-card class="mx-auto">
-    <v-navigation-drawer width="200" class="teal lighten-2" dark permanent app>
-      <v-list>
-        <v-list-item class="center">
-          <v-list-item-content>
-            <v-list-item-title>Previsualización</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-  </v-card>
+        <v-navigation-drawer  class="teal lighten-2" dark permanent>
+          <v-list>
+            <v-list-item class="center">
+              <v-list-item-content>
+                <v-list-item-title>Previsualización</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+        </v-navigation-drawer>
+      </v-card>
     </div>
   </div>
 </template>
@@ -132,7 +133,7 @@ export default {
 //     cursor: pointer;
 //   }
 // }
-// // Largo
+// Largo
 // .sidebar-large {
 //   display: flex;
 //   padding-left: 30px;

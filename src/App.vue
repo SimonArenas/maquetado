@@ -2,47 +2,50 @@
   <v-app class="app">
     <!-- Left sidebar -->
     <LeftSidebar v-if="LeftSidebar" :AsideHover="asideHover" />
-    <v-main>
-      <NotificationArea
-        v-if="showNotificationArea"
-        :fixedPreheader="FixedPreheader"
-        :preheaderText="PreheaderText"
-        :iconName="IconName"
-        :iconColor="IconColor"
-      />
-      <HeaderHorizontal
-        v-if="showHorizontalHeader"
-        :ShowOneHeader="showOneHeader"
-        :alignMenu="alignMenu"
-        :fullWidth="FullWidth"
-        :showProfileHorizontalHeader="ShowProfileHorizontalHeader"
-        :showSocialMediaHorizontalHeader="ShowSocialMediaHorizontalHeader"
-        :showLogoHorizontalHeader="ShowLogoHorizontalHeader"
-        :showContactHorizontalHeader="ShowContactHorizontalHeader"
-        :fixedHeader="FixedHeader"
-        :phoneNumber="PhoneNumber"
-        :Links="SocialMediaLinks"
-        :Checks="SocialMediaChecks"
-      />
-      <Preheader
-        v-if="showSubheader"
-        :ShowOneHeader="showOneHeader"
-        :showProfileSubheader="ShowProfileSubheader"
-        :showSocialMediaSubheader="ShowSocialMediaSubheader"
-        :showLogoSubheader="ShowLogoSubheader"
-        :showContactSubheader="ShowContactSubheader"
-        :fixedSubheader="FixedSubheader"
-        :phoneNumber="PhoneNumber"
-        :Links="SocialMediaLinks"
-        :Checks="SocialMediaChecks"
-      />
-      <!-- <HeaderVertical v-if="showVerticalHeader" :MenuSize="menuSize" /> -->
+    <NotificationArea
+      v-if="showNotificationArea"
+      :fixedPreheader="FixedPreheader"
+      :preheaderText="PreheaderText"
+      :iconName="IconName"
+      :iconColor="IconColor"
+    />
+    <HeaderHorizontal
+      v-if="showHorizontalHeader"
+      :ShowOneHeader="showOneHeader"
+      :alignMenu="alignMenu"
+      :fullWidth="FullWidth"
+      :showProfileHorizontalHeader="ShowProfileHorizontalHeader"
+      :showSocialMediaHorizontalHeader="ShowSocialMediaHorizontalHeader"
+      :showLogoHorizontalHeader="ShowLogoHorizontalHeader"
+      :showContactHorizontalHeader="ShowContactHorizontalHeader"
+      :fixedHeader="FixedHeader"
+      :phoneNumber="PhoneNumber"
+      :Links="SocialMediaLinks"
+      :Checks="SocialMediaChecks"
+    />
+    <Preheader
+      v-if="showSubheader"
+      :ShowOneHeader="showOneHeader"
+      :showProfileSubheader="ShowProfileSubheader"
+      :showSocialMediaSubheader="ShowSocialMediaSubheader"
+      :showLogoSubheader="ShowLogoSubheader"
+      :showContactSubheader="ShowContactSubheader"
+      :fixedSubheader="FixedSubheader"
+      :phoneNumber="PhoneNumber"
+      :Links="SocialMediaLinks"
+      :Checks="SocialMediaChecks"
+    />
+    <!-- TODO: opción 1 -->
+    <!-- <HeaderVertical v-if="showVerticalHeader" :MenuSize="menuSize" /> -->
 
-      <v-row>
-        <HeaderVertical v-if="showVerticalHeader" :MenuSize="menuSize" />
-      </v-row>
-      <!-- Wizard -->
-      <v-row>
+    <!-- Wizard -->
+    
+    <v-main>
+      <!-- TODO: opción 2 -->
+      <v-row no-gutters>
+        <v-col v-if="showVerticalHeader" cols="auto">
+          <HeaderVertical :MenuSize="menuSize" />
+        </v-col>
         <v-col>
           <v-container :class="{ 'container-2': fullContentWidth }">
             <v-card grow>
@@ -587,5 +590,9 @@ export default {
 
 .center {
   text-align: center;
+}
+
+.redBorder {
+  border: 2px solid red;
 }
 </style>
